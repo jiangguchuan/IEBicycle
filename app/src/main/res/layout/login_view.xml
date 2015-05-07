@@ -6,7 +6,7 @@
 
     <LinearLayout android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:background="#000000"
         android:layout_gravity="center"
         android:orientation="vertical">
@@ -64,7 +64,7 @@
             android:text="@string/auto_login_label"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:layout_gravity="right"
+            android:layout_gravity="right|center_vertical"
             android:layout_marginLeft="25dp" />
 
         <LinearLayout android:layout_width="match_parent"
