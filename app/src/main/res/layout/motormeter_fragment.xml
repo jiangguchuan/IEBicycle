@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/weather_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/motormeter_top_margin"
+        android:layout_marginLeft="@dimen/motormeter_side_margin"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/weather_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/weather_sun" />
+
+        <TextView
+            android:id="@+id/weather_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="@dimen/motormeter_space_margin"
+            android:text="35℃"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/time_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weather_layout"
+        android:layout_alignLeft="@id/weather_layout"
+        android:layout_marginTop="@dimen/motormeter_up_down_margin"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/time_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/time" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="@dimen/motormeter_space_margin"
+            android:text="24:00"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/battery_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/motormeter_top_margin"
+        android:layout_marginRight="@dimen/motormeter_side_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/battery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingRight="@dimen/motormeter_space_margin"
+            android:text="50%"/>
+
+        <ImageView
+            android:id="@+id/battery_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/battery" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/phone_battery_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weather_layout"
+        android:layout_alignRight="@id/battery_layout"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/motormeter_up_down_margin"
+        android:layout_marginRight="@dimen/motormeter_side_margin"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/phone_battery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingRight="@dimen/motormeter_space_margin"
+            android:text="80%"/>
+
+        <ImageView
+            android:id="@+id/phone_battery_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/battery" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/speedometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/speedometer"/>
+
+    <LinearLayout
+        android:id="@+id/mileage_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/speedometer"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/travelled_mileage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="155dp"
+            android:textSize="30dp"
+            android:text="15Km"/>
+
+        <TextView
+            android:id="@+id/total_mileage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="150dp"
+            android:textSize="30dp"
+            android:text="60Km"/>
+    </LinearLayout>
+</RelativeLayout>
