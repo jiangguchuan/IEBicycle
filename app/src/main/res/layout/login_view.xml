@@ -7,7 +7,7 @@
     <LinearLayout android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:background="#000000"
+        android:background="@drawable/login_dialog_bg"
         android:layout_gravity="center"
         android:orientation="vertical">
 
