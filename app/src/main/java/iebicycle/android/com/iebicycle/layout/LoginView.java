@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import iebicycle.android.com.iebicycle.HomeActivity;
-import iebicycle.android.com.iebicycle.MotormeterActivity;
 import iebicycle.android.com.iebicycle.R;
 
 public class LoginView extends LinearLayout implements OnClickListener {

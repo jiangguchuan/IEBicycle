@@ -11,5 +11,6 @@
     <string name="login_label">Login</string>
     <string name="register_label">Register</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="motor_miles">mileage</string>
 
 </resources>
