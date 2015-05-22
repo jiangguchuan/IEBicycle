@@ -12,5 +12,6 @@
     <string name="register_label">Register</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="motor_miles">mileage</string>
 
 </resources>
