@@ -179,6 +179,9 @@ public class MotormeterFragment extends Fragment {
     }
 
     private Bitmap Bytes2Bimap(byte[] b) {
+        if (b == null) {
+            return null;
+        }
         if (b.length != 0) {
             return BitmapFactory.decodeByteArray(b, 0, b.length);
         } else {

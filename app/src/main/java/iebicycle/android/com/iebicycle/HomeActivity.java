@@ -5,10 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import iebicycle.android.com.iebicycle.layout.BottomMenu;
 import iebicycle.android.com.iebicycle.service.WeatherService;
 import iebicycle.android.com.iebicycle.utils.WebAccessTools;
 
-import iebicycle.android.com.iebicycle.DeleteMenu.OnButtonClicked;
+import iebicycle.android.com.iebicycle.layout.BottomMenu.OnButtonClicked;
 
 
 public class HomeActivity extends Activity {
@@ -19,15 +20,14 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
-        final DeleteMenu deleteMenu = new DeleteMenu(this);
-        deleteMenu.init();
-        deleteMenu.setOnButtonClickListener(new OnButtonClicked() {
+        final BottomMenu bottomMenu = new BottomMenu(this).init();
+        bottomMenu.setOnButtonClickListener(new OnButtonClicked() {
             @Override
             public void onMenuBtnClicked() {
-                if (deleteMenu.isShowing()) {
-                    deleteMenu.hide();
+                if (bottomMenu.isShowing()) {
+                    bottomMenu.hide();
                 } else {
-                    deleteMenu.show();
+                    bottomMenu.show();
                 }
             }
         });
