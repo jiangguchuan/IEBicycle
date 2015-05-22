@@ -8,26 +8,42 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class DeleteMenu extends LinearLayout implements OnClickListener {
+
+    public interface OnButtonClicked {
+        void onMenuBtnClicked();
+    }
 
     private Activity mActivity;
     private LinearLayout mContainer;
     private TextView mDelete;
     private TextView mCancel;
     private boolean mIsShowing;
+    private ImageView mMenuBtn;
+    private OnButtonClicked mListener;
 
     public DeleteMenu(Context context) {
         super(context);
         mActivity = (Activity) context;
         LayoutInflater.from(context).inflate(R.layout.main_menu_layout, this);
         mContainer = (LinearLayout) findViewById(R.id.menu_container);
+        mMenuBtn = (ImageView) findViewById(R.id.menu_btn);
+        mMenuBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.menu_btn:
+                if (mListener != null) {
+                    mListener.onMenuBtnClicked();
+                }
+                break;
+        }
     }
 
     public DeleteMenu init() {
@@ -38,7 +54,7 @@ public class DeleteMenu extends LinearLayout implements OnClickListener {
 
     public void show() {
         TranslateAnimation showAnimation = new TranslateAnimation(0, 0, 400, 0);
-        showAnimation.setDuration(2000);
+        showAnimation.setDuration(400);
         showAnimation.setInterpolator(new AccelerateInterpolator());
         mContainer.setAnimation(showAnimation);
         mContainer.setVisibility(View.VISIBLE);
@@ -47,7 +63,7 @@ public class DeleteMenu extends LinearLayout implements OnClickListener {
 
     public void hide() {
         TranslateAnimation hideAnimation = new TranslateAnimation(0, 0, 0, 400);
-        hideAnimation.setDuration(2000);
+        hideAnimation.setDuration(400);
         hideAnimation.setInterpolator(new AccelerateInterpolator());
         mContainer.setAnimation(hideAnimation);
         mContainer.setVisibility(View.GONE);
@@ -56,5 +72,9 @@ public class DeleteMenu extends LinearLayout implements OnClickListener {
 
     public boolean isShowing() {
         return mIsShowing;
+    }
+
+    public void setOnButtonClickListener(OnButtonClicked l) {
+        mListener = l;
     }
 }

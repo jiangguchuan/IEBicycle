@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import iebicycle.android.com.iebicycle.HomeActivity;
-import iebicycle.android.com.iebicycle.MotormeterActivity;
 import iebicycle.android.com.iebicycle.R;
 
 public class LoginView extends LinearLayout implements OnClickListener {
@@ -41,7 +41,12 @@ public class LoginView extends LinearLayout implements OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
-                mContext.startActivity(new Intent(mContext, HomeActivity.class));
+                if (mAccount.getText().toString().equals("1234") &&
+                        mPassword.getText().toString().equals("1234")) {
+                    mContext.startActivity(new Intent(mContext, HomeActivity.class));
+                } else {
+                    Toast.makeText(mContext, "请输入正确的用户名和密码", Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.btn_register:
                 break;
