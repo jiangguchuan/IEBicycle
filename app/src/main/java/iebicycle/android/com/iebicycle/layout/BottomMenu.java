@@ -1,4 +1,4 @@
-package iebicycle.android.com.iebicycle;
+package iebicycle.android.com.iebicycle.layout;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,25 +13,27 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DeleteMenu extends LinearLayout implements OnClickListener {
+import iebicycle.android.com.iebicycle.R;
+
+public class BottomMenu extends LinearLayout implements OnClickListener {
 
     public interface OnButtonClicked {
         void onMenuBtnClicked();
     }
 
     private Activity mActivity;
-    private LinearLayout mContainer;
+    private View mContainer;
     private TextView mDelete;
     private TextView mCancel;
     private boolean mIsShowing;
     private ImageView mMenuBtn;
     private OnButtonClicked mListener;
 
-    public DeleteMenu(Context context) {
+    public BottomMenu(Context context) {
         super(context);
         mActivity = (Activity) context;
         LayoutInflater.from(context).inflate(R.layout.main_menu_layout, this);
-        mContainer = (LinearLayout) findViewById(R.id.menu_container);
+        mContainer = findViewById(R.id.menu_item_container);
         mMenuBtn = (ImageView) findViewById(R.id.menu_btn);
         mMenuBtn.setOnClickListener(this);
         findViewById(R.id.item_1).setOnClickListener(this);
@@ -59,7 +61,7 @@ public class DeleteMenu extends LinearLayout implements OnClickListener {
         }
     }
 
-    public DeleteMenu init() {
+    public BottomMenu init() {
         mActivity.addContentView(this, new LayoutParams(ViewGroup.LayoutParams
                 .MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         return this;
