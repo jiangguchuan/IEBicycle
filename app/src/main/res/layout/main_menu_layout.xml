@@ -20,24 +20,39 @@
         android:background="#cc000000"
         android:layout_alignParentBottom="true">
 
-        <ImageView android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/item_1"
+            android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_motor_meter"
+            android:background="@drawable/menu_item_selected"
             android:scaleType="center"
             android:layout_gravity="center_vertical" />
 
-        <ImageView android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/item_2"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:src="@drawable/ic_navigation"
+            android:background="@drawable/menu_item_selected"
             android:scaleType="center"
             android:layout_gravity="center_vertical" />
 
-        <ImageView android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/item_3"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:src="@drawable/ic_settings"
+            android:background="@drawable/menu_item_selected"
             android:scaleType="center"
             android:layout_gravity="center_vertical" />
     </LinearLayout>

@@ -11,6 +11,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DeleteMenu extends LinearLayout implements OnClickListener {
 
@@ -33,6 +34,9 @@ public class DeleteMenu extends LinearLayout implements OnClickListener {
         mContainer = (LinearLayout) findViewById(R.id.menu_container);
         mMenuBtn = (ImageView) findViewById(R.id.menu_btn);
         mMenuBtn.setOnClickListener(this);
+        findViewById(R.id.item_1).setOnClickListener(this);
+        findViewById(R.id.item_2).setOnClickListener(this);
+        findViewById(R.id.item_3).setOnClickListener(this);
     }
 
     @Override
@@ -42,6 +46,15 @@ public class DeleteMenu extends LinearLayout implements OnClickListener {
                 if (mListener != null) {
                     mListener.onMenuBtnClicked();
                 }
+                break;
+            case R.id.item_1:
+                Toast.makeText(mActivity, "仪表盘", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.item_2:
+                Toast.makeText(mActivity, "导航", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.item_3:
+                Toast.makeText(mActivity, "故障处理", Toast.LENGTH_LONG).show();
                 break;
         }
     }

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<PreferenceScreen xmlns:android='http://schemas.android.com/apk/res/android'>
+
+    <PreferenceCategory
+        android:key='mylocation'
+        android:title='车辆信息'>
+        <Preference
+            android:key='wireless_network'
+            android:summary='正常'
+            android:title='轮胎信息' />
+        <Preference
+            android:key='wireless_network'
+            android:summary='正常'
+            android:title='电池信息' />
+        <Preference
+            android:key='wireless_network'
+            android:summary='正常'
+            android:title='机械信息' />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key='mymsg'
+        android:title='个人信息'>
+        <Preference
+            android:key='myname'
+            android:title='用户名'
+            android:summary='艾易电动车' />
+    </PreferenceCategory>
+
+</PreferenceScreen>
