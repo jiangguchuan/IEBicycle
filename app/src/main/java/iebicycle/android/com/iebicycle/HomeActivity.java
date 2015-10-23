@@ -16,18 +16,19 @@ public class HomeActivity extends Activity {
 
     private WebAccessTools mWebTools;
     private ImageView mTravelledMileageView;
+    private BottomMenu mBottomMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
-        final BottomMenu bottomMenu = new BottomMenu(this).init();
-        bottomMenu.setOnButtonClickListener(new OnButtonClicked() {
+        mBottomMenu = new BottomMenu(this).create();
+        mBottomMenu.setOnButtonClickListener(new OnButtonClicked() {
             @Override
             public void onMenuBtnClicked() {
-                if (bottomMenu.isShowing()) {
-                    bottomMenu.hide();
+                if (mBottomMenu.isShowing()) {
+                    mBottomMenu.hide();
                 } else {
-                    bottomMenu.show();
+                    mBottomMenu.show();
                 }
             }
         });
@@ -48,4 +49,12 @@ public class HomeActivity extends Activity {
 //        }.start();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (mBottomMenu.isShowing()) {
+            mBottomMenu.hide();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

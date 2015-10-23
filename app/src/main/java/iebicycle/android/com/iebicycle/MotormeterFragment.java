@@ -153,14 +153,14 @@ public class MotormeterFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        SharedPreferences.Editor editor = mPreferences.edit();
-        editor.putString(KEY_WEATHER_ICON, mWeatherInfo.getIconName());
-        editor.putFloat(KEY_WEATHER_TEMP, mWeatherInfo.getTemp());
-        editor.commit();
-
-        mContext.unregisterReceiver(weatherReceiver);
-        mContext.unregisterReceiver(batteryReceiver);
-        mContext.unregisterReceiver(timeReceiver);
+//        SharedPreferences.Editor editor = mPreferences.edit();
+//        editor.putString(KEY_WEATHER_ICON, mWeatherInfo.getIconName());
+//        editor.putFloat(KEY_WEATHER_TEMP, mWeatherInfo.getTemp());
+//        editor.commit();
+//
+//        mContext.unregisterReceiver(weatherReceiver);
+//        mContext.unregisterReceiver(batteryReceiver);
+//        mContext.unregisterReceiver(timeReceiver);
     }
 
     @Override
