@@ -38,16 +38,6 @@ public class HomeActivity extends Activity {
 
         Intent intent = new Intent(this, WeatherService.class);
         this.startService(intent);
-//        mWebTools = new WebAccessTools(this);
-//
-//        new Thread() {
-//            @Override
-//            public void run() {
-//                super.run();
-//                String webContent = mWebTools.getWebContent("http://api.openweathermap.org/data/2.5/weather?q=Chengdu,CN&APPID=fa149c9090de1fc1cc549629fa577524");
-//                Log.d("xxx", "webContent:" + webContent);
-//            }
-//        }.start();
     }
 
     private void initBottomView() {
