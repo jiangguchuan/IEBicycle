@@ -158,9 +158,9 @@ public class MotormeterFragment extends Fragment {
 //        editor.putFloat(KEY_WEATHER_TEMP, mWeatherInfo.getTemp());
 //        editor.commit();
 //
-//        mContext.unregisterReceiver(weatherReceiver);
-//        mContext.unregisterReceiver(batteryReceiver);
-//        mContext.unregisterReceiver(timeReceiver);
+        mContext.unregisterReceiver(weatherReceiver);
+        mContext.unregisterReceiver(batteryReceiver);
+        mContext.unregisterReceiver(timeReceiver);
     }
 
     @Override

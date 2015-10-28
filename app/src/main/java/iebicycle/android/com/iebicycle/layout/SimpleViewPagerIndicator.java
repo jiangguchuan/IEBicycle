@@ -123,7 +123,7 @@ public class SimpleViewPagerIndicator extends LinearLayout implements OnPageChan
         this.onPageChangeListener = onPageChangeListener;
     }
 
-    private void setCurrentItem(int position) {
+    private void    setCurrentItem(int position) {
         if (pager != null && pager.getAdapter() != null) {
             int numberOfItems = pager.getAdapter().getCount();
 

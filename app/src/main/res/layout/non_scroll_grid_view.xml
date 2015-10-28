@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<iebicycle.android.com.iebicycle.layout.NonScrollableGridView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gv_event_type_selector"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:choiceMode="singleChoice"
+    android:listSelector="@android:color/transparent"
+    android:numColumns="3"
+    android:paddingBottom="13dp"
+    android:paddingTop="16dp"
+    android:scrollbars="none"
+    android:verticalSpacing="20dp"/>

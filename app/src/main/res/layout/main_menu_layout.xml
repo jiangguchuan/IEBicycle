@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
 
-    <iebicycle.android.com.iebicycle.layout.PagingGridView
+
+    <LinearLayout
         android:id="@+id/menu_item_container"
         android:layout_width="match_parent"
         android:layout_height="400px"
-        android:visibility="gone"
-        android:background="#cc505050"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:visibility="gone">
+
+    </LinearLayout>
 </RelativeLayout>

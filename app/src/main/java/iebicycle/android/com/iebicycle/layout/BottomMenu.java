@@ -3,8 +3,6 @@ package iebicycle.android.com.iebicycle.layout;
 import android.app.Activity;
 import android.content.Context;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,18 +15,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import iebicycle.android.com.iebicycle.R;
 
 public class BottomMenu extends LinearLayout implements OnClickListener, View.OnTouchListener {
+
+    public static final int CONTAINER_HEIGHT = 400;
 
     public interface OnButtonClicked {
         void onMenuBtnClicked();
     }
 
     private Activity mActivity;
-    private View mContainer;
+    private LinearLayout mContainer;
     private TextView mDelete;
     private TextView mCancel;
     private boolean mIsShowing;
@@ -40,7 +39,8 @@ public class BottomMenu extends LinearLayout implements OnClickListener, View.On
     private int mScreenHeight;
     boolean isClick = false;
     private RelativeLayout mMenuLayout;
-    private boolean mReLayout = false;
+    private boolean mMoveIcon = true;
+            ;
 
     public BottomMenu(Context context) {
         super(context);
@@ -50,7 +50,7 @@ public class BottomMenu extends LinearLayout implements OnClickListener, View.On
         mActivity = (Activity) context;
         LayoutInflater.from(context).inflate(R.layout.main_menu_layout, this);
         mMenuLayout = (RelativeLayout) findViewById(R.id.menu_layout);
-        mContainer = findViewById(R.id.menu_item_container);
+        mContainer = (LinearLayout) findViewById(R.id.menu_item_container);
         addMenuBtn(context);
     }
 
@@ -60,8 +60,8 @@ public class BottomMenu extends LinearLayout implements OnClickListener, View.On
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(120, 120);
         lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
         lp.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-        lp.leftMargin=30;
-        lp.topMargin=30;
+        lp.leftMargin = 30;
+        lp.topMargin = 30;
         mMenuBtn.setLayoutParams(lp);
         mMenuBtn.setId(R.id.menu_btn);
         mMenuLayout.addView(mMenuBtn);
@@ -70,8 +70,8 @@ public class BottomMenu extends LinearLayout implements OnClickListener, View.On
         mMenuBtn.addOnLayoutChangeListener(new OnLayoutChangeListener() {
             @Override
             public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-                if (mReLayout) {
-                    mReLayout = false;
+                mMoveIcon = !mMoveIcon;
+                if (mMoveIcon) {
                     mMenuBtn.layout(oldLeft, oldTop, oldRight, oldBottom);
                 }
             }
@@ -87,7 +87,7 @@ public class BottomMenu extends LinearLayout implements OnClickListener, View.On
                 mLastY = (int) event.getRawY();
                 return false;
             case MotionEvent.ACTION_MOVE:
-                mReLayout = false;
+                mMoveIcon = true;
                 int dx = (int) event.getRawX() - mLastX;
                 int dy = (int) event.getRawY() - mLastY;
 
@@ -108,8 +108,8 @@ public class BottomMenu extends LinearLayout implements OnClickListener, View.On
                     bottom = top + v.getHeight();
                 }
                 if (isShowing()) {
-                    if (bottom > mScreenHeight - 400) {
-                        bottom = mScreenHeight - 400;
+                    if (bottom > mScreenHeight - CONTAINER_HEIGHT) {
+                        bottom = mScreenHeight - CONTAINER_HEIGHT;
                         top = bottom - v.getHeight();
                     }
                 } else {
@@ -147,6 +147,22 @@ public class BottomMenu extends LinearLayout implements OnClickListener, View.On
         }
     }
 
+    public void setContentView(View view) {
+        mContainer.addView(view);
+    }
+
+    public void setContentView(int resId) {
+        mContainer.addView(LayoutInflater.from(mActivity).inflate(resId, null));
+    }
+
+    public void setBackgroundResource(int resId) {
+        mContainer.setBackgroundResource(resId);
+    }
+
+    public void setBackgroundColor(int color) {
+        mContainer.setBackgroundColor(color);
+    }
+
     public BottomMenu create() {
         mActivity.addContentView(this, new LayoutParams(ViewGroup.LayoutParams
                 .MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -154,14 +170,13 @@ public class BottomMenu extends LinearLayout implements OnClickListener, View.On
     }
 
     public void show() {
-        mReLayout = true;
-        TranslateAnimation showAnimation = new TranslateAnimation(0, 0, 400, 0);
+        TranslateAnimation showAnimation = new TranslateAnimation(0, 0, CONTAINER_HEIGHT, 0);
         showAnimation.setDuration(200);
         showAnimation.setInterpolator(new AccelerateInterpolator());
         mContainer.setAnimation(showAnimation);
         mContainer.setVisibility(View.VISIBLE);
         mIsShowing = true;
-        if (mMenuBtn.getBottom() > mScreenHeight - 400) {
+        if (mMenuBtn.getBottom() > mScreenHeight - CONTAINER_HEIGHT) {
             showAnimation.setAnimationListener(new Animation.AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
@@ -169,9 +184,9 @@ public class BottomMenu extends LinearLayout implements OnClickListener, View.On
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    if (mMenuBtn.getBottom() > mScreenHeight - 400) {
+                    if (mMenuBtn.getBottom() > mScreenHeight - CONTAINER_HEIGHT) {
                         TranslateAnimation ta = new TranslateAnimation(
-                                0, 0, 0, (mScreenHeight - mMenuBtn.getBottom()) - 400);
+                                0, 0, 0, (mScreenHeight - mMenuBtn.getBottom()) - CONTAINER_HEIGHT);
                         ta.setDuration(100);
                         ta.setInterpolator(new AccelerateInterpolator());
                         mMenuBtn.setAnimation(ta);
@@ -182,9 +197,9 @@ public class BottomMenu extends LinearLayout implements OnClickListener, View.On
 
                             @Override
                             public void onAnimationEnd(Animation animation) {
-                                mMenuBtn.layout(mMenuBtn.getLeft(), mScreenHeight - 400 - mMenuBtn.getHeight(),
-                                        mMenuBtn.getRight(), mScreenHeight - 400);
-                                mReLayout = false;
+                                mMoveIcon = true;
+                                mMenuBtn.layout(mMenuBtn.getLeft(), mScreenHeight - CONTAINER_HEIGHT - mMenuBtn.getHeight(),
+                                        mMenuBtn.getRight(), mScreenHeight - CONTAINER_HEIGHT);
                             }
 
                             @Override
@@ -202,13 +217,16 @@ public class BottomMenu extends LinearLayout implements OnClickListener, View.On
     }
 
     public void hide() {
-        mReLayout = true;
-        TranslateAnimation hideAnimation = new TranslateAnimation(0, 0, 0, 400);
+        TranslateAnimation hideAnimation = new TranslateAnimation(0, 0, 0, CONTAINER_HEIGHT);
         hideAnimation.setDuration(200);
         hideAnimation.setInterpolator(new AccelerateInterpolator());
         mContainer.setAnimation(hideAnimation);
         mContainer.setVisibility(View.GONE);
         mIsShowing = false;
+    }
+
+    public void setButtonIcon(int resId) {
+        mMenuBtn.setImageResource(resId);
     }
 
     public boolean isShowing() {
