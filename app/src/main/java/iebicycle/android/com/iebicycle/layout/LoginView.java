@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import iebicycle.android.com.iebicycle.HomeActivity;
 import iebicycle.android.com.iebicycle.R;
+import iebicycle.android.com.iebicycle.Test1Activity;
 import iebicycle.android.com.iebicycle.TestActivity;
 
 public class LoginView extends LinearLayout implements OnClickListener {
@@ -51,7 +52,7 @@ public class LoginView extends LinearLayout implements OnClickListener {
 //                }
                 break;
             case R.id.btn_register:
-                mContext.startActivity(new Intent(mContext, TestActivity.class));
+                mContext.startActivity(new Intent(mContext, Test1Activity.class));
                 break;
         }
     }

@@ -22,12 +22,12 @@ public abstract class PagerGridAdapter<T extends Object> extends PagerAdapter {
     private List<T> mData;
     private int mPageItemCount;
 
-    public PagerGridAdapter(List<T> data, Context context, int width, int height) {
+    public PagerGridAdapter(List<T> data, Context context, int column, int raw) {
         mData = data;
         mContext = context;
-        mPageItemCount = width * height;
-        for(int i = 0; i < data.size() / (width * height) + 1; i++) {
-            mViewList.add(getGridView(i, width, height));
+        mPageItemCount = column * raw;
+        for(int i = 0; i < data.size() / (column * raw) + 1; i++) {
+            mViewList.add(getGridView(i, column, raw));
         }
     }
 

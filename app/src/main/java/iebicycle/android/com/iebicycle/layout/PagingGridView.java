@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 
 import java.util.List;
@@ -17,6 +18,8 @@ import iebicycle.android.com.iebicycle.adapter.PagerGridAdapter;
  * Created by Guchuan on 2015/5/22.
  */
 public class PagingGridView extends LinearLayout {
+
+    public final static int INVALID_SELECTOR_INDEX = -1;
 
     private Context mContext;
     private ViewPager mViewPager;
@@ -60,4 +63,33 @@ public class PagingGridView extends LinearLayout {
             }
         }
     }
+
+    public void setItemChecked(int position) {
+        List<NonScrollableGridView> viewList = mAdapter.getGridViews();
+        int pageItemCount = mAdapter.getPageItemCount();
+        int pageNum = position / pageItemCount;
+        int pageIndex = position % pageItemCount;
+        mViewPager.setCurrentItem(pageNum);
+        for(int i = 0; i < viewList.size() ; i++) {
+            GridView gridView = viewList.get(i);
+            if (gridView.getChoiceMode() == GridView.CHOICE_MODE_SINGLE) {
+                gridView.setItemChecked(pageNum == i ? pageIndex : INVALID_SELECTOR_INDEX, true);
+            }
+        }
+    }
+
+    public int getCheckedItemPosition() {
+        List<NonScrollableGridView> viewList = mAdapter.getGridViews();
+        for(int i = 0; i < viewList.size(); i++) {
+            GridView gridView = viewList.get(i);
+            if (gridView.getChoiceMode() == GridView.CHOICE_MODE_SINGLE) {
+                int checkedPosition = gridView.getCheckedItemPosition();
+                if (checkedPosition != INVALID_SELECTOR_INDEX) {
+                    return i * mAdapter.getPageItemCount() + checkedPosition;
+                }
+            }
+        }
+        return INVALID_SELECTOR_INDEX;
+    }
+
 }
